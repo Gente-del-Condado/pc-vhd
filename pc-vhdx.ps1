@@ -3,52 +3,55 @@ param (
     [string]$parameter,
     [string]$filePath
 )
-
+# Al MONTAR Funci贸n para detectar si es ISO o vhd, vhdx.
 function Attach-Image {
     param (
         [string]$filePath
     )
 
-    # Extraer la extensi髇 del archivo
-    # $fileExtension = [System.IO.Path]::GetExtension($filePath)
+    # Extraer la extensi贸n del archivo y convertir en minuscula.
 	$fileExtension = [System.IO.Path]::GetExtension($filePath).ToLower()
-
+    
     if ($fileExtension -eq ".vhd" -or $fileExtension -eq ".vhdx") {
+    	# Si la extensi贸n de los archivos son vhd o vhdx.
         Attach-VHD -filePath $filePath
     }
     elseif ($fileExtension -eq ".iso") {
+    	# Si la extensi贸n de los archivos son ISO
         Attach-ISO -filePath $filePath
     }
     else {
-        Write-Host "Error: Extensi髇 de archivo no admitida."
+        Write-Host "Error: Extensi贸n de archivo no admitida."
     }
 }
-
+# Al DESMONTAR Funci贸n para detectar si es ISO o vhd, vhdx.
 function Detach-Image {
     param (
         [string]$filePath
     )
 
-    # Extraer la extensi髇 del archivo
-    $fileExtension = [System.IO.Path]::GetExtension($filePath)
+    # Extraer la extensi贸n del archivo y convertir en minuscula.
+    $fileExtension = [System.IO.Path]::GetExtension($filePath).ToLower()
 
     if ($fileExtension -eq ".vhd" -or $fileExtension -eq ".vhdx") {
+    	# Si la extensi贸n de los archivos son vhd o vhdx.
         Detach-VHD -filePath $filePath
     }
     elseif ($fileExtension -eq ".iso") {
+    	# Si la extensi贸n de los archivos son ISO
         Detach-ISO -filePath $filePath
     }
     else {
-        Write-Host "Error: Extensi髇 de archivo no admitida."
+        Write-Host "Error: Extensi贸n de archivo no admitida."
     }
 }
-
+# Funci贸n para montar VHX o VHDX.
 function Attach-VHD {
     param (
         [string]$filePath
     )
 
-    # Extraer el nombre del archivo (sin la extensi髇) de la ruta
+    # Extraer el nombre del archivo (sin la extensi贸n) de la ruta
     $fileName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
 
     # Montar la imagen del disco y esperar un momento para asegurarse de que Windows reconozca el disco
@@ -65,13 +68,13 @@ function Attach-VHD {
         Write-Host "Error: No se pudo encontrar la letra del VHD/VHDX."
     }
 }
-
+# Funci贸n para Desmontar VHX o VHDX.
 function Detach-VHD {
     param (
         [string]$filePath
     )
 
-    # Extraer el nombre del archivo (sin la extensi髇) de la ruta
+    # Extraer el nombre del archivo (sin la extensi贸n) de la ruta
     $fileName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
 
     # Obtener el volumen asociado al nombre del archivo
@@ -85,7 +88,7 @@ function Detach-VHD {
         Write-Host "Error: No se pudo encontrar la letra del VHD/VHDX."
     }
 }
-
+# Funci贸n para montar ISO.
 function Attach-ISO {
     param (
         [string]$filePath
@@ -95,7 +98,7 @@ function Attach-ISO {
     Mount-DiskImage -ImagePath $filePath -PassThru | Out-Null
     Start-Sleep -Seconds 2
 
-    # Obtener informaci髇 sobre las unidades de CD/DVD usando WMI
+    # Obtener informaci贸n sobre las unidades de CD/DVD usando WMI
     $cdDrive = Get-WmiObject -Query "SELECT * FROM Win32_CDROMDrive" | Select-Object -First 1
 
     if ($cdDrive) {
@@ -105,7 +108,7 @@ function Attach-ISO {
         Write-Host "Error: No se pudo encontrar la letra de unidad del ISO."
     }
 }
-
+# Funci贸n para desmontar ISO.
 function Detach-ISO {
     param (
         [string]$filePath
@@ -118,8 +121,6 @@ function Detach-ISO {
     Write-Host "ISO desmontada: $filePath"
 }
 
-
-
 if ($action -eq "/attach") {
     Attach-Image -filePath $filePath
 }
@@ -127,5 +128,5 @@ elseif ($action -eq "/detach") {
     Detach-Image -filePath $filePath
 }
 else {
-    Write-Host "Acci髇 no reconocida. Use /attach o /detach."
+    Write-Host "Acci贸n no reconocida. Use /attach o /detach."
 }
