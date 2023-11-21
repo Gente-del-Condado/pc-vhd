@@ -167,7 +167,7 @@ if exist "%vhdattachinstallar%" (
         echo El archivo de scrip de pc-vhdx.ps1 no existe.
         echo Abriendo la pagina de descarga...
 		timeout /t 3 >nul
-        start "" "https://github.com/medo64/VhdAttach/"
+        start "" "https://github.com/Gente-del-Condado/pc-vhd/blob/b46ecc18bae4a98bfe053b8c130759ff45a445f3/pc-vhdx.ps1"
 		pause
 		cls
     )
