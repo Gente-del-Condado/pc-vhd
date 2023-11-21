@@ -1,0 +1,24 @@
+Id: pc-vhd
+Name: PC-VHD
+Website: 'https://www.medo64.com/vhdattach/'
+Profiles:
+  - Name: VHD
+    StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^pc-vhd\.bat$
+  - Name: VHD + ISO
+    StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -s'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^pc-vhd\.bat$
+  - Name: VHD Debug
+    StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^pc-vhd\.bat$
+  - Name: VHD Explorar
+    StartupArguments: '-explorar {ImagePath} {ImageNameNoExt} -n'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^pc-vhd\.bat$
