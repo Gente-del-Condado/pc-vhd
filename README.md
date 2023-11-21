@@ -1,4 +1,4 @@
-# pc-vhd
+# PC-VHD
 
 **Descripción:**
 
