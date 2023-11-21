@@ -1,56 +1,49 @@
 # pc-vhd
-Función para detectar juegos de pc como roms, por medio de archivos vhd o vhdx. Puede montar automáticamente archivos vhd, vhdx y iso. El uso principal es en playnite.  Se usa como si fuera un emulador.
 
+**Descripción:**
 
----------------
-Para poder usar el archivo pc-vhd.bat (“emulador”) / pc-vhd.exe
-0º necesita tener el scrip. pc-vhdx.ps1 en la misma carpeta.
-1º Los formatos de los Discos virtuales, VHD,VHDX tienen que ser en formatos NTFS
-2º El nombre de la CARPETA que contiene el VHD, el nombre del archivo y el Nombre del VOLUMEN del disco tienen que ser Exactamente Iguales. No usar acentos ni símbolos. Para espacios poner ( _ ).
+La función pc-vhd permite detectar juegos de PC como ROMs a través de archivos VHD o VHDX, pudiendo montar automáticamente archivos VHD, VHDX e ISO. Diseñado principalmente para su uso en Playnite, se utiliza como un emulador.
 
-4º El directorio de instalación en Playnite Tiene que ser la carpeta donde se encuentra el archivo VHD,VHDX. (NO NECESARIO PARA El “emulador”
+**Instrucciones de Uso:**
 
-5º Si el Juego Requiere usar una ISO, esta tiene que estar dentro del VHD/X en la siguiente Ubicación y nombre VHD:\ISO\ISO.iso
+1. Asegúrese de tener el script pc-vhdx.ps1 en la misma carpeta que el archivo pc-vhd.bat ("emulador") o pc-vhd.exe.
+2. Los discos virtuales en formatos VHD y VHDX deben estar en formato NTFS.
+3. La carpeta que contiene el VHD, el nombre del archivo y el nombre del volumen deben ser idénticos, sin acentos ni símbolos. Para espacios, utilice guiones bajos ( _ ).
 
-El bat Funciona de la siguiente Manera.
+**Requisitos:**
 
-El Primer Parámetro. Tiene que ser uno de estos 3 (-montar -desmontar -explorar)
+4. El directorio de instalación en Playnite debe ser la carpeta que contiene el archivo VHD o VHDX. (No es necesario para el "emulador").
 
-El Segundo Parámetro. Tiene que ser la Ruta del archivo VHD. Si lo usas en playnite. usar {ImagePath} (tiene que agregar el archivo VHD/VHDX como ROM en el juego en playnite)
+5. Si el juego requiere el uso de una ISO, esta debe estar ubicada dentro del VHD/X en la siguiente ruta y con el nombre VHD:\ISO\ISO.iso.
 
-El Tercer Parámetro. Tiene que ser El Mismo Nombre del Volumen que tiene el VHD cuando esta montado. En playnite usar: {ImageNameNoExt} ((USA EL NOMBRE DEL ROM-ARCHIVO VHD/X))
+**Uso del Archivo pc-vhd.bat / pc-vhd.exe:**
 
-El Cuarto Parámetro. Es para decir si cargara la ISO que esta dentro del VHD-VHDX \ISO\ISO.iso. Usa (-s) Para si (-n) Para No
-----
-El Quinto parámetro es Opcional. Pero es para ejecutar el archivo Indicado, cuando se usa -montar. Usar el nombre del archivo con la extensión: Jugar.exe \Datos\Programa.exe
+El archivo pc-vhd.bat se utiliza de la siguiente manera:
 
-El Sexto parámetro, es para indicar la ruta de trabajo del ejecutable: -p (directorio Principal del VHD) \Datos\ (para indicar que trabaje el ejecutable en la carpeta \Datos\)
-	El sexto parámetro puede estar vació si no se van a agregar mas, si deseas agregar un parámetro al ejecutable del juego Es OBLIGATORIO poner -p 'o' CarpetaTrabajo\
+- **Primer Parámetro:** Uno de estos 3 (-montar, -desmontar, -explorar).
+- **Segundo Parámetro:** Ruta del archivo VHD. En Playnite, use {ImagePath} (agregue el archivo VHD/VHDX como ROM en el juego en Playnite).
+- **Tercer Parámetro:** Mismo nombre del volumen que tiene el VHD cuando está montado. En Playnite, use: {ImageNameNoExt} (usa el nombre del archivo VHD/X).
+- **Cuarto Parámetro:** Indica si cargará la ISO dentro del VHD-VHDX \ISO\ISO.iso. Use (-s) para sí, (-n) para no.
 
-El Séptimo Parámetro, a partir del séptimo parámetro, y todos los siguientes, serán pasados al ejecutable del Juego.
+**Parámetros Adicionales Opcionales:**
 
-Ejemplos:
-	En playnite
-El mas básico, cuando no se requiere indicar una carpeta de trabajo ni pasar ningún parámetro. Por defecto usa la carpeta de trabajo principal del VHD:\
-W:\Playnite\Emulation\Emulators\PC-VHD\pc-vhd.bat -montar {ImagePath} {ImageNameNoExt} -s Jugar.bat
+- **Quinto Parámetro:** Ejecuta el archivo indicado cuando se utiliza -montar. Use el nombre del archivo con la extensión (Ejemplo: Jugar.exe \Datos\Programa.exe).
+- **Sexto Parámetro:** Ruta de trabajo del ejecutable. Use -p (directorio principal del VHD) \Datos\ para indicar la carpeta de trabajo del ejecutable.
 
-Ejecuta el Archivo Jugar.bat en el directorio principal VHD:\ (-P)  y le pasa el parametro -noclip (al ejecutable Jugar.bat)
-W:\Playnite\Emulation\Emulators\PC-VHD\pc-vhd.bat -montar {ImagePath} {ImageNameNoExt} -s Jugar.bat -p -noclip
+*Ejemplos:*
 
-Ejecuta el Archivo Jugar.bat en el directorio principal H:\Datos\ (Datos\)  y le pasa el parámetro -noclip (al ejecutable Jugar.bat)
-W:\Playnite\Emulation\Emulators\PC-VHD\pc-vhd.bat -montar {ImagePath} {ImageNameNoExt} -s Jugar.bat Datos\ -noclip
+- En Playnite:
+  - Básico con ISO: `pc-vhd.bat -montar {ImagePath} {ImageNameNoExt} -s Jugar.bat`
+  - Con carpeta de trabajo principal: `pc-vhd.bat -montar {ImagePath} {ImageNameNoExt} -n Jugar.bat -p -noclip`
+  - Con otra carpeta de trabajo: `pc-vhd.bat -montar {ImagePath} {ImageNameNoExt} -n Jugar.bat Datos\ -noclip`
 
+- Acceso Directo:
+  - `pc-vhd.bat -montar W:\Playnite\Juegos\Mario\Mario.vhd Mario -n Jugar.bat -p -noclip`
+  - `pc-vhd.bat -montar W:\Playnite\Juegos\Mario\Mario.vhd Mario -s Jugar.bat \Datos\ -noclip`
 
-En un Acceso Directo al archivo  pc-vhd.bat
+**Notas:**
 
-W:\Playnite\Emulation\Emulators\PC-VHD\pc-vhd.bat -montar W:\Playnite\Juegos\Mario\Mario.vhd Mario -s Jugar.bat -p -noclip
-		
-W:\Playnite\Emulation\Emulators\PC-VHD\pc-vhd.bat -montar W:\Playnite\Juegos\Mario\Mario .vhd Mario -s Jugar.bat \Datos\ -noclip
-
-*NOTAS*
-Puede usar VHD Attacht el programa, para crear los archivos de discos virtuales.
-	Formato recomendable: VHDX (windows 8.1+)
-	Al crear el disco virtual, agregar unos minimo 250mb mas al tamaño del juego.
-	Si el juego, para juegos antiguos, que guardan los save en el mismo directorio, del juego
-		agregar otros 50mb extras.
-	
+- Se puede usar VHD Attach, el programa, para crear los archivos de discos virtuales.
+- Formato recomendado: VHDX (Windows 8.1+).
+- Al crear el disco virtual, añadir al menos 250 MB adicionales al tamaño del juego.
+- Para juegos antiguos que guardan saves en el mismo directorio, agregar 50 MB extras.
