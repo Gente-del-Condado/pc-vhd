@@ -1,6 +1,6 @@
 Id: pc-vhd
 Name: PC-VHD
-Website: 'https://www.medo64.com/vhdattach/'
+Website: 'https://github.com/Gente-del-Condado/pc-vhd'
 Profiles:
   - Name: VHD
     StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
