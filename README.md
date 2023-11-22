@@ -51,3 +51,6 @@ El archivo pc-vhd.bat se utiliza de la siguiente manera:
 - Formato recomendado: VHDX (Windows 8.1+).
 - Al crear el disco virtual, añadir al menos 250 MB adicionales al tamaño del juego.
 - Para juegos antiguos que guardan saves en el mismo directorio, agregar 50 MB extras.
+
+## Video de Demostración
+[![Demostración del Proyecto](https://img.youtube.com/vi/Y9fwrZNZSik/0.jpg)](https://www.youtube.com/watch?v=Y9fwrZNZSik)
