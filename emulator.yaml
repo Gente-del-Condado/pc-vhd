@@ -2,23 +2,43 @@ Id: pc-vhd
 Name: PC-VHD
 Website: 'https://github.com/Gente-del-Condado/pc-vhd'
 Profiles:
-  - Name: VHD
+  - Name: VHD pw
     StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
     Platforms: [pc_windows]
     ImageExtensions: [vhd, vhdx]
     StartupExecutable: ^pc-vhd\.bat$
-  - Name: VHD + ISO
+  - Name: VHD + ISO pw
     StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -s'
     Platforms: [pc_windows]
     ImageExtensions: [vhd, vhdx]
     StartupExecutable: ^pc-vhd\.bat$
-  - Name: VHD Debug
+  - Name: VHD Debug pw
     StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
     Platforms: [pc_windows]
     ImageExtensions: [vhd, vhdx]
     StartupExecutable: ^pc-vhd\.bat$
-  - Name: VHD Explorar
+  - Name: VHD Explorar pw
     StartupArguments: '-explorar {ImagePath} {ImageNameNoExt} -n'
     Platforms: [pc_windows]
     ImageExtensions: [vhd, vhdx]
     StartupExecutable: ^pc-vhd\.bat$
+  - Name: VHD atc
+    StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^VhdAttach\.bat$
+  - Name: VHD + ISO atc
+    StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -s'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^VhdAttach\.bat$
+  - Name: VHD Debug atc
+    StartupArguments: '-montar {ImagePath} {ImageNameNoExt} -n'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^VhdAttach\.bat$
+  - Name: VHD Explorar atc
+    StartupArguments: '-explorar {ImagePath} {ImageNameNoExt} -n'
+    Platforms: [pc_windows]
+    ImageExtensions: [vhd, vhdx]
+    StartupExecutable: ^VhdAttach\.bat$
