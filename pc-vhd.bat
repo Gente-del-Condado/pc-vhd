@@ -1,7 +1,7 @@
 @echo off
 cd /d "%~dp0"
 REM ---------------------------------------------------------------
-REM Usado para optener privilegios administrador.
+REM Usado para obtener privilegios administrador.
 REM Verificar si el directorio actual contiene espacios en el path
 if NOT "%cd%"=="%cd: =%" (
    echo El directorio actual contiene espacios en el path.
