@@ -3,8 +3,9 @@
 **Descripción:**
 
 La función pc-vhd permite detectar juegos de PC como ROMs a través de archivos VHD o VHDX, pudiendo montar automáticamente archivos VHD, VHDX e ISO. Diseñado principalmente para su uso en Playnite, se utiliza como un emulador.
-1. pc-vhd.bat: Es usado como intermediario, entre playnite y el scrip pc-vhdx.ps1
+1. pc-vhd.bat: Es usado como intermediario, entre playnite y el scrip pc-vhdx.ps1 (usando powershell)
 2. pc-vhdx.ps1: Es uso para montar y desmontar los archivos. vhd, vhdx y iso.
+3. VhdAttach.bat: Scrip, para montar unsando el programa VhdAttach = https://github.com/medo64/VhdAttach (se necesita tener instalado VhdAttach)
 
 **Instrucciones de Uso:**
 1. Colocar el contenido en: Playnite\Emulation\Emulators\PC-VHD (pc-vhd.bat y pc-vhdx.ps1)
