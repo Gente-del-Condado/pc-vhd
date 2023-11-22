@@ -32,6 +32,7 @@ El archivo pc-vhd.bat se utiliza de la siguiente manera:
 
 - **Quinto Parámetro:** Ejecuta el archivo indicado cuando se utiliza -montar. Use el nombre del archivo con la extensión (Ejemplo: Jugar.exe \Datos\Programa.exe).
 - **Sexto Parámetro:** Ruta de trabajo del ejecutable. Use -p (directorio principal del VHD) \Datos\ para indicar la carpeta de trabajo del ejecutable.
+- **Sextimo Parámetro:** Son los parametros que se le pueden pasar a los exe de los juegos. (Depende de cada juego *.exe)
 
 *Ejemplos:*
 
